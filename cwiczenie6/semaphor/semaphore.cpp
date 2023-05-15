@@ -19,7 +19,7 @@ int Semaphore::readNumber(){
     #ifdef DEBUG
         cout << "READ NUBMER: " << stoi(s) << endl;
     #endif
-    return 1;
+    return stoi(s);
 }
 
 void Semaphore::writeNumber(int i){
@@ -37,16 +37,19 @@ Semaphore::Semaphore(const char* path, int value) : path(path), value(value){
 Semaphore::~Semaphore(){
 }
 //end konstruktory
-int Semaphore::createSem(){
+int createSem(int value, const char* path){
     #ifdef DEBUG
         cout << "--------CREATESUM: " << value << endl;
     #endif
     int des = open(path, O_CREAT | O_EXCL | O_RDWR, 0644);
     if(des){
         close(des);
-        plik.open(path, ios::out | ios::in | ios::trunc);
-        writeNumber(value);
-        plik.close();
+        fstream obiekt;
+        obiekt.open(path, ios::out | ios::in | ios::trunc);
+        obiekt.seekg(0, ios::beg);
+        obiekt.seekp(0, ios::beg);
+        obiekt << value;
+        obiekt.close();
         return 0;
     }
     else{
@@ -61,7 +64,7 @@ int Semaphore::openSem(){
     plik.seekg(0, ios::beg);
     plik.seekp(0, ios::beg);
     #ifdef DEBUG
-        cout << "Opensem: " << getpid() << endl;
+        cout << "Opensem: " << getpid() << plik.is_open() << endl;
     #endif
     return plik.is_open();
 }
@@ -77,9 +80,9 @@ int Semaphore::deleteSem(){
 }
 
 int Semaphore::waitSem(){
-    int i;
     while (true){
-        i = readNumber();
+        sleep(1);
+        int i = readNumber();
         #ifdef DEBUG
             cout << "SEMWAIT: " << i << endl;
         #endif
@@ -105,6 +108,7 @@ int Semaphore::postSem(){
     #ifdef DEBUG
         cout << "SEMPOST: " << i << endl;
     #endif
-    writeNumber(i++);
+    i++;
+    writeNumber(i);
     return 0;
 }

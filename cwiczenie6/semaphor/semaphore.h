@@ -14,7 +14,7 @@ class Semaphore{
         Semaphore(const char* path = nullptr, int value = 1);
         ~Semaphore();
 
-        int createSem();
+        friend int createSem(int, const char*);
         int openSem();
         int waitSem();
         int postSem();
@@ -31,3 +31,5 @@ class Semaphore{
 
 
 };
+
+int createSem(int = 0, const char* = NULL);
