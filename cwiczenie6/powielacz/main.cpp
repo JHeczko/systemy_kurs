@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <semaphore.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <fcntl.h>
 #include <string>
 #include <signal.h>

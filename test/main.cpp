@@ -7,18 +7,17 @@
 using namespace std;
 
 int main(){
-    int des = open("./plik.txt", O_RDWR | O_TRUNC, 0644);
-    close(des);
-    int liczba = 22;
-    fstream plik;
-    plik.open("./plik.txt", ios::in | ios::out | ios::trunc);
-    plik.seekg(0, ios::beg);
-    plik.seekp(0, ios::beg);
-    plik << liczba;
-        plik.seekg(0, ios::beg);
-    plik.seekp(0, ios::beg);
-    plik << 45;
-    
+    int des = open("./plik.txt", O_RDWR, 0644);
+    char buf[20];
+    while(read(des, buf, 20) != 0){
+        for(int i = 0; i < 20; ++i){
+            cout<<buf[i]<<endl;
+        }
+    };
+    lseek(des,0,SEEK_SET);
+    const char* cos = "0987654321";
+    write(des, cos, 10);
+
 
 
 }

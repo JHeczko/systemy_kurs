@@ -29,7 +29,8 @@ int main(){
         int towarK = open("./towarK.txt", O_WRONLY, 110110100);
         int readII;  // ilosc odczytanych znakow
 
-        do{                                         
+        do{    
+            sleep(1);                                     
             readII = read(pipeout, buffout, nbyte);
             if(readII > 0){
                 write(towarK, buffout, readII);                  //tutaj juz tak naprawde nie potrzebujemy sprawdzac czy znakow jest 20 czy 16, bo ile ich  wczytamy z potoku

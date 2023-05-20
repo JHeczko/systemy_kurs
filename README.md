@@ -1,7 +1,7 @@
 # CWICZENIE 5
 
 **Uruchamianie A:**
-
+* **GLOWNY PROGAM:** 
     >Aby uruchomic program nalezy wpisac "make run1"
 
 **Uruchamianie B:**
@@ -12,7 +12,7 @@
 
 # CWICZENIE 6
 
-    We wszystkich tych rzeczach -D DEBUG jest opcjonany, polecam wylaczyc bo bedzie duzo syfu w terminalu
+We wszystkich tych rzeczach -D DEBUG jest opcjonany, polecam wylaczyc bo bedzie duzo syfu w terminalu
 
 * **Uruchamianie biblioteki:**
 
