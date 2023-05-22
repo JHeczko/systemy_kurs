@@ -72,8 +72,8 @@ int main(int argc, char* argv[]){
                 exit(EXIT_FAILURE);
             }
             case 0:{
-                if(i == 0){execlp("./kons", "kons", "/mem", "/semK", "./towarK.txt", "./semP",(char *) NULL);};
-                if(i == 1){execlp("./prod", "prod", "/mem", "/semK", "./towarP.txt","./semK",(char *) NULL);};
+                if(i == 0){execlp("./kons", "kons", "/mem", "/semK", "./towarK.txt", "/semP",(char *) NULL);};
+                if(i == 1){execlp("./prod", "prod", "/mem", "/semK", "./towarP.txt","/semP",(char *) NULL);};
                 break;
             }
             default:{

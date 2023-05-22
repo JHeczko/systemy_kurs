@@ -18,7 +18,7 @@ int main(int argc, char* argv[]){
     sem_t* des_semP = sem_open("/semP", O_RDWR);
     sem_t* des_semK = sem_open("/semK", O_RDWR);
     int des_mem = shm_open("/mem",O_RDWR);
-    int des_file = open("./towarK.txt", O_RDWR, 0644);
+    int des_file = open("./towarK.txt", O_RDWR | O_TRUNC, 0644);
     atexit(nic);
 
     buf_object* objptr = (buf_object *)mmap(NULL, sizeof(buf_object), PROT_WRITE | PROT_READ , MAP_SHARED, des_mem, 0);

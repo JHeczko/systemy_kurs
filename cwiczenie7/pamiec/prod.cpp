@@ -46,6 +46,7 @@ int main(int argc, char* argv[]){
         objptr->arr_buf[i][j] = bufor;
         cout << "POZYCJA WRITE: " << objptr->pos_write << " i: " << i << " j: " << j << " BUFOR: " << bufor << endl;
         objptr->pos_write = (objptr->pos_write + 1) % 20;
+
         sem_post(des_semK);
     }while(1);
     cout << "PO PEtlI";
