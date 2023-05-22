@@ -11,37 +11,11 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-#define SIZEBUF 20
+#define SIZEBUF 10
 
 using namespace std;
 
-void wyjscie(){
-    if(sem_unlink("semK") == -1){
-        perror("UNLINK ERROR");
-    }
-    if(sem_unlink("semP") == -1){
-        perror("UNLINK ERROR");
-    }
-    if(shm_unlink("mem") == -1){
-        perror("UNLINK ERROR");
-    }
-    cout << "Usunalem" << endl;
-}
-
-void handler(int sig_id){
-    if(sem_unlink("semK") == -1){
-        perror("UNLINK ERROR");
-    }
-    if(sem_unlink("semP") == -1){
-        perror("UNLINK ERROR");
-    }
-    if(shm_unlink("mem") == -1){
-        perror("UNLINK ERROR");
-    }
-    cout << "Usunalem i odsluzylem sygnal: " << sig_id << endl;
-}
-
 struct buf_object{
-    char arr_buf[SIZEBUF];
+    char arr_buf[2][SIZEBUF];
     int pos_write, pos_read;
 };

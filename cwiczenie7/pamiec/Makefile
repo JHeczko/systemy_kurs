@@ -49,7 +49,7 @@ help: $(EXEC2) $(EXEC3)
 
 
 .PHONY: run_main
-run_main: $(EXEC1)
+run_main: $(EXEC1) 
 	./$(EXEC1)
 
 
