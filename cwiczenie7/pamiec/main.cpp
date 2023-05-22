@@ -72,8 +72,8 @@ int main(int argc, char* argv[]){
                 exit(EXIT_FAILURE);
             }
             case 0:{
-                if(i == 0){execlp("./kons", "kons", "/mem", "/semK", "./towarK.txt",(char *) NULL);};
-                if(i == 1){execlp("./prod", "prod", "/mem", "/semP", "./towarP.txt",(char *) NULL);};
+                if(i == 0){execlp("./kons", "kons", "/mem", "/semK", "./towarK.txt", "./semP",(char *) NULL);};
+                if(i == 1){execlp("./prod", "prod", "/mem", "/semK", "./towarP.txt","./semK",(char *) NULL);};
                 break;
             }
             default:{
@@ -87,5 +87,4 @@ int main(int argc, char* argv[]){
     #ifdef DEBUG
         cout << "Poczekalem\n";
     #endif 
-
 }

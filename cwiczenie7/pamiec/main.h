@@ -19,3 +19,7 @@ struct buf_object{
     char arr_buf[2][SIZEBUF];
     int pos_write, pos_read;
 };
+
+void nic(){
+
+};
