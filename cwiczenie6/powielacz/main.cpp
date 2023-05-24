@@ -22,7 +22,7 @@ using namespace std;
 // argv[1] = ilosc procesow do odpalenia; argv[2] = sciezka procesu do odpalenia, argv[3] = ilosc sekscji krytycznych
 void wyjscie(){
     while((sem_unlink("/semafor1")) != -1);
-    while(unlink("./plik.txt"));
+   // while(unlink("./plik.txt"));
 }
 
 void handler(int n){
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
     string s1 = argv[3]; // ilosc sekcji krytycznych
     string s2 = argv[1]; // ilosc procesow do odpalenia
     unsigned int n = stoi(s2);
-    sem_t* sem = sem_open("/semafor1", O_CREAT | O_EXCL, 0644, stoi(s1));
+    sem_t* sem = sem_open("/semafor1", O_CREAT | O_EXCL, 0644, 1);
     if(sem == SEM_FAILED){
         exit(EXIT_FAILURE);
     }
@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
                 cout << "Nie dziala"<<endl; 
                 exit(EXIT_FAILURE);
             case 0:
-                execlp(argv[2], argv[2], (char*)NULL);
+                execlp(argv[2], argv[2], argv[3], (char*)NULL);
                 break;
             default:
                 break;

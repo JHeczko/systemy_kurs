@@ -9,6 +9,9 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
+    string s1 = argv[1];
+    cout << s1 << endl;
+    int licznik = 1;
     sem_t* sem = sem_open("/semafor1", O_RDWR);
     if(sem == SEM_FAILED){
         cout << "Nie dziala";
@@ -40,7 +43,10 @@ int main(int argc, char* argv[]){
         sleep(n);
         cout<< "Skonczylem sekcje krytyczna: "<< getpid() << endl;
         sem_post(sem);
+        if(licznik == stoi(s1)){
         break;
+        }
+        licznik++;
     }
     while(1);
 }
