@@ -40,7 +40,8 @@ int main(){
             }
         }
         while(readII > 0);
-
+        sleep(2);
+        printf("ZAMYKAM\n");
         close(towarK);
         close(pipeout);
 //--------------------------------KONIEC ZCZYTYWANIA----------------------------------------------------------------------------------------------------

@@ -23,8 +23,8 @@ int main(){
         }
         int readI;  // ilosc odczytanych znakow
 
-        do{ 
-            sleep(2);                                       // wypisanie w konsoli pliku towarP.txt i dodanie do potoku tego co wczytujemy i wypisujemy
+        do{                                        
+            // wypisanie w konsoli pliku towarP.txt i dodanie do potoku tego co wczytujemy i wypisujemy
             readI = read(towarP, buffin, nbyte);
             if(readI == 0){
                 break;
@@ -48,7 +48,6 @@ int main(){
         
         printf("\n");
         printf("Wykonalemk i czkeam");
-        sleep(2);
         close(pipein);
         close(towarP);  
              
