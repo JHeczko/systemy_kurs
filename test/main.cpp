@@ -6,15 +6,26 @@
 
 using namespace std;
 
+class A{
+    public:
+        void cos(){cout << "cos\n";}
+};
+class B : virtual public A{
+    public:
+        void cos(){cout<<"COS2\n";};
+};
+class C :virtual public A{};
+
+class D : public C, public B{};
+
 int main(){
-    int des = open("./plik.txt", O_RDWR, 0644);
-    char buf;
-    while(read(des, &buf, 1) != 0){
-            cout<<buf<<endl;
-            if(buf == '/0'){
-                cout << "koneic";
-            }
-    };
+    B b;
+    b.cos();
+    C c;
+    c.cos();
+
+    D d;
+    d.cos();
 
 
 
