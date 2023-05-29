@@ -100,10 +100,7 @@ int main(){
 
     for(int i = 0; i < licznik; ++i){
         //mq_receive(desK, buf, 20, NULL);
-        for(int j = 0; j < 20; ++j){
-            cout << buf[i];
-        }
-        cout << endl;
+        cout << buf << endl;
     }
 
 }

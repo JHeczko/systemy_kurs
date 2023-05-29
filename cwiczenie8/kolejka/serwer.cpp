@@ -155,8 +155,14 @@ while(1){
     //    perror("mqsend SERWER error");
     //}
 
-
-
+i = 0;
+pid.erase(); 
+nazwa.erase();
+liczba1.erase();
+liczba2.erase();
+znak.erase();
+wynikS.erase();
+flag = 0;
     break;
 }
 }
