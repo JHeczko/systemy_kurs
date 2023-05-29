@@ -9,19 +9,19 @@ OBJS1  = $(NAME1).o
 OBJS2  = $(NAME2).o
 LIBS  = 
 HEADS = 
-CFLAGS = -Wall -std=c++20 -pedantic 
-LFLAGS = -Wall -std=c++20 -pedantic
-LDLIBS = -lm
+CFLAGS = -Wall -std=c++17 -pedantic -lrt
+LFLAGS = -Wall -std=c++17 -pedantic -lrt
+LDLIBS = -lm -lrt
 CO = g++
 LD = $(CO)
 AR = ar
 ARFLAGS = rsv
 
 %.o: %.c %.h
-	$(CO) $(CFLAGS) -c $<
+	$(CO) $(CFLAGS) -c -lrt $<
 
 %.o: %.c
-	$(CO) $(CFLAGS) -c $<
+	$(CO) $(CFLAGS) -c -lrt $<
 
 #all
 .PHONY: all
@@ -32,10 +32,10 @@ all: $(EXEC1) $(EXEC2)
 
 
 $(EXEC2): $(OBJS2) $(LIBS) 
-	$(LD) -o $@ $(LFLAGS) $^
+	$(LD) -lrt -o $@ $(LFLAGS) $^
 
 $(EXEC1): $(OBJS1) $(LIBS) 
-	$(LD) -o $@ $(LFLAGS) $^
+	$(LD) -lrt -o $@ $(LFLAGS) $^
 
 
 #Uruchamianie

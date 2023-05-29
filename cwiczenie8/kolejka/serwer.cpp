@@ -10,19 +10,19 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <algorithm>
-//#include <mqueue.h>
+#include <mqueue.h> 
 #include "header.h"
 
 using namespace std;
 
 void exitf(){
-    //while(mq_unlink(SERWER_QUEUE) != -1);
+    while(mq_unlink(SERWER_QUEUE) != -1);
     cout << "Zamknalem serwer" << endl;   
     exit(EXIT_SUCCESS);
 }
 
 void handler(int id){
-    //while(mq_unlink(SERWER_QUEUE) != -1);
+    while(mq_unlink(SERWER_QUEUE) != -1);
     cout << "Obsluzylem i usunalem sygnal o numerze: " << id << endl;
     exit(EXIT_SUCCESS);
 }
@@ -34,33 +34,33 @@ int main(){
     attrS.mq_flags = 0;
     attrS.mq_maxmsg = 5;
     attrS.mq_msgsize = 20; 
-/* Poniewaz macos to syf, to nie ma tutaj mqueue.h, wiec w repo to bedzie zakomentowane ale wystarczy odkomentowac i to skompilowac, gdzies gdzie ta biblioteka jest + trzeba dopisac #include <mqueue.h>
 
-    mqd_t desS = mq_open(SERWER_QUEUE, O_CREAT | O_EXCL | O_RDONLY , 0644, &attrS) ;
-    if(desS = -1){
+    mqd_t desS = mq_open(SERWER_QUEUE, O_CREAT | O_RDONLY , 0644, &attrS);
+    if(desS == -1){
         perror("mq_open failure S-side");
-        exit(EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
+    atexit(exitf);
+    signal(SIGINT, handler);
 
-*/
 ///////////////////////
 
 // WYWOLANIE PROCESOW
-    int id = {0};
-    for(int i = 0; i<4; ++i){
-        //id=fork();
-        switch(id){
-            case -1:{
-                exit(EXIT_FAILURE);
-            }
-            case 0:{
-                //execlp("./klient.x", "klient.x", (char *) NULL);
-                break;
-            }
-            default:{
-                break;
-            }
-            }}
+    // int id = {0};
+    // for(int i = 0; i<4; ++i){
+    //     //id=fork();
+    //     switch(id){
+    //         case -1:{
+    //             exit(EXIT_FAILURE);
+    //         }
+    //         case 0:{
+    //             //execlp("./klient.x", "klient.x", (char *) NULL);
+    //             break;
+    //         }
+    //         default:{
+    //             break;
+    //         }
+    //         }}
 /////////////////////////////////
 
 // ZCZYTANIE 
@@ -72,12 +72,12 @@ string liczba1, liczba2;
 string znak;
 string wynikS;
 int flag = 0;
-//mqd_t desK;
+mqd_t desK;
 
 while(1){
-    // //if(mq_receive(desS, buf, 20, NULL) == -1){
-    //     perror("mq receive error in SERWER - SIDE");
-    // };
+    if(mq_receive(desS, buf, 20, NULL) == -1){
+        perror("mq receive error in SERWER - SIDE");
+    };
     while(buf[i] != '|'){
         pid += buf[i];
         ++i;
@@ -102,10 +102,10 @@ while(1){
                 break;
             default:
                 if(flag){
-                    liczba1 += buf[i];
+                    liczba2 += buf[i];
                 }
                 else{
-                    liczba2 += buf[i];
+                    liczba1 += buf[i];
                 }
                 break;
         }
@@ -146,14 +146,15 @@ while(1){
     #ifdef DEBUG
         cout << "NAZWA: " << nazwa << endl;
     #endif
-    // desK = mq_open(nazwa.data(), O_WRONLY) ;
-    // if(desK = -1){
-    //     perror("mq_open failure S-side");
-    //     exit(EXIT_FAILURE);
-    // }
-    //if(mq_send(desK, wynikS.data(), 20, 1) == -1){
-    //    perror("mqsend SERWER error");
-    //}
+    desK = mq_open(nazwa.data(), O_WRONLY) ;
+    if(desK == -1){
+        perror("mq_open failure S-side");
+        exit(EXIT_FAILURE);
+    }
+    if(mq_send(desK, wynikS.data(), 20, 1) == -1){
+       perror("mqsend SERWER error");
+       exit(EXIT_FAILURE);
+    }
 
 i = 0;
 pid.erase(); 
@@ -163,6 +164,5 @@ liczba2.erase();
 znak.erase();
 wynikS.erase();
 flag = 0;
-    break;
 }
 }
