@@ -36,8 +36,8 @@ int main(){
     attrS.mq_msgsize = 20; 
 /* Poniewaz macos to syf, to nie ma tutaj mqueue.h, wiec w repo to bedzie zakomentowane ale wystarczy odkomentowac i to skompilowac, gdzies gdzie ta biblioteka jest + trzeba dopisac #include <mqueue.h>
 
-    mqd_t desS = mq_open(SERWER_QUEUE, O_CREAT | O EXCL | O_RDONLY , 0644, &attrS) ;
-    if(desS = (mqd_t)-1){
+    mqd_t desS = mq_open(SERWER_QUEUE, O_CREAT | O_EXCL | O_RDONLY , 0644, &attrS) ;
+    if(desS = -1){
         perror("mq_open failure S-side");
         exit(EXIT_FAILURE;
     }
@@ -146,10 +146,10 @@ while(1){
     #ifdef DEBUG
         cout << "NAZWA: " << nazwa << endl;
     #endif
-    // desK = mq_open(nazwa, O_WRONLY) ;
-    // if(desK = (mqd_t)-1){
+    // desK = mq_open(nazwa.data(), O_WRONLY) ;
+    // if(desK = -1){
     //     perror("mq_open failure S-side");
-    //     exit(EXIT_FAILURE;
+    //     exit(EXIT_FAILURE);
     // }
     //if(mq_send(desK, wynikS.data(), 20, 1) == -1){
     //    perror("mqsend SERWER error");

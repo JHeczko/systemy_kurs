@@ -52,16 +52,16 @@ int main(){
 
 /* Poniewaz macos to syf, to nie ma tutaj mqueue.h, wiec w repo to bedzie zakomentowane ale wystarczy odkomentowac i to skompilowac, gdzies gdzie ta biblioteka jest + trzeba dopisac #include <mqueue.h>
 
-    mqd_t desK = mq_open(nazwa.c_str(), O_CREAT | O EXCL | O_RDONLY , 0644, &attrK );
-    if(desK = (mqd_t)-1){
+    mqd_t desK = mq_open(nazwa.c_str(), O_CREAT | O_EXCL | O_RDONLY , 0644, &attrK );
+    if(desK = -1){
         perror("mq_open failure K");
-        exit(EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
     mqd_t desS = mq_open(SERWER_QUEUE, O_WRONLY);
-    if(desS = (mqd_t)-1){
+    if(desS = -1){
         perror("mq_open failure S");
-        exit(EXIT_FAILURE;
+        exit(EXIT_FAILURE);
     }
 
 */
