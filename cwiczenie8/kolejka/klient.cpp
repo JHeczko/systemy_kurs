@@ -50,7 +50,7 @@ int main(){
     nazwa += pids;
     cout << nazwa.c_str() << endl;
 
-    mqd_t desK = mq_open(nazwa.c_str(), O_CREAT | O_RDONLY , 0644, &attrK );
+    mqd_t desK = mq_open(nazwa.c_str(), O_CREAT | O_RDONLY | O_EXCL, 0644, &attrK );
     if(desK == -1){
         perror("mq_open failure K");
         exit(EXIT_FAILURE);

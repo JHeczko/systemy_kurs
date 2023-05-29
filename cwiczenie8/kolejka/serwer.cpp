@@ -35,7 +35,7 @@ int main(){
     attrS.mq_maxmsg = 5;
     attrS.mq_msgsize = 20; 
 
-    mqd_t desS = mq_open(SERWER_QUEUE, O_CREAT | O_RDONLY , 0644, &attrS);
+    mqd_t desS = mq_open(SERWER_QUEUE, O_CREAT | O_RDONLY | O_EXCL, 0644, &attrS);
     if(desS == -1){
         perror("mq_open failure S-side");
         exit(EXIT_FAILURE);

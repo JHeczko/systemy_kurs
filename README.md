@@ -44,3 +44,9 @@
 * **Uruchamianie biblioteki:**
 
     > Zwykla kompilacja "g++ main.cpp class.cpp -std=c++17; ./a.out"
+
+# CWICZENIE 8
+
+* **Uruchamianie zadania z kolejkami:**
+
+    > Aby skompilowac serwer nalezy wpisac "g++ serwer.cpp -std=c++17 -lrt -D DEBUG -o serwer.x", ay skompilowac klienta nalezy wpisac "g++ klient.cpp -std=c++17 -lrt -D DEBUG -o klient.x"
