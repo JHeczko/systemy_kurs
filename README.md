@@ -50,3 +50,7 @@
 * **Uruchamianie zadania z kolejkami:**
 
     > Aby skompilowac serwer nalezy wpisac "g++ serwer.cpp -std=c++17 -lrt -D DEBUG -o serwer.x", ay skompilowac klienta nalezy wpisac "g++ klient.cpp -std=c++17 -lrt -D DEBUG -o klient.x"
+
+* **Uruchamianie biblioteki:**
+
+    > Aby skompilowac biblioteke, poprostu trzeba wpisac "g++ kolejka.cpp -std=c++17 -lrt"
