@@ -9,8 +9,8 @@
 #include <fcntl.h>
 #include "semaphore.h"
 
-sem_t* semaphore::open_sem(const char *name, int oflag, mode_t mode = -1, unsigned int value = -1){
-if((value == -1) && (mode == -1)){
+sem_t* semaphore::open_sem(const char *name, int oflag, mode_t mode, unsigned int value){
+if(value == 999){
     sem_t* des = sem_open(name, oflag);
     if(des ==SEM_FAILED){
         perror("open error");

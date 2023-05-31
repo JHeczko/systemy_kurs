@@ -13,12 +13,14 @@
 
 
 namespace semaphore{
-    sem_t* open_sem(const char *name, int oflag, mode_t mode = -1, unsigned int value = -1);
+
+    sem_t* open_sem(const char *name, int oflag, mode_t mode = -1, unsigned int value = 999);
     int close_sem(sem_t *sem);
     int unlink_sem(const char *name);
     int post_sem(sem_t *sem);
     int wait_sem(sem_t *sem);
     int getvalue_sem(sem_t *sem, int *sval); 
+
 }
 
 /*
