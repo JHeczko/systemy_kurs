@@ -1,3 +1,9 @@
+# CWICZENIA 1-4
+
+* **Uruchamianie wszystkiego:**
+
+    >Trzeba probowac komende "make run_" a tam gdzie podloga sa numerki do 1-5
+
 # CWICZENIE 5
 
 **Uruchamianie A:**
@@ -64,3 +70,5 @@
 * **Uruchamianie zadania z wątkami:**
 
     > Aby skompilowac wpisac "g++ main.cpp -std=c++17" albo "make run1", przy wpisywaniu "./a.out x y", gdzie 'x' - ilosc sekcji krytycznych, a 'y' - to ilosc wątkow
+
+> JEZELI GDZIES WYSTEPUJA FOLDERY Z DOPISKIEM *_good TO OZNACZA TO ZE SA TO POPRAWIONE ZADANIA WERSJI BEZ GOOD, CZYLI ZADANIA ZROBIONE NA WLASNYCH BIBLIOTEKACH, W SKROCIE ZADANIA Z _good MAJA DOLACZONE BIBLIOTEKI, A TE BEZ NIE. JEDNO I DRUGIE DZIALA POPRAWNIE
