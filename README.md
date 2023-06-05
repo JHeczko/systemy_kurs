@@ -54,3 +54,9 @@
 * **Uruchamianie biblioteki:**
 
     > Aby skompilowac biblioteke, poprostu trzeba wpisac "g++ kolejka.cpp -std=c++17 -lrt"
+
+# CWICZENIE 9
+
+* **Uruchamianie zadania z wątkami:**
+
+    > Aby skompilowac wpisac "g++ main.cpp -std=c++17" albo "make run1", przy wpisywaniu "./a.out x y", gdzie 'x' - ilosc sekcji krytycznych, a 'y' - to ilosc wątkow

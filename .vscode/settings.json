@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.cpp": "cpp",
         "string": "cpp",
         "fstream": "cpp",
         "locale": "cpp",
@@ -49,6 +50,9 @@
         "semaphore": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "__threading_support": "cpp",
+        "mutex": "cpp",
+        "cstring": "cpp"
     }
 }
