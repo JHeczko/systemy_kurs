@@ -59,7 +59,9 @@
 
 * **Uruchamianie zadania z kolejkami:**
 
-    > Aby skompilowac serwer nalezy wpisac "g++ serwer.cpp -std=c++17 -lrt -D DEBUG -o serwer.x", ay skompilowac klienta nalezy wpisac "g++ klient.cpp -std=c++17 -lrt -D DEBUG -o klient.x"
+    > Aby skompilowac serwer nalezy wpisac "g++ serwer.cpp -std=c++17 -lrt -D DEBUG -o serwer.x", ay skompilowac klienta nalezy wpisac "g++ klient.cpp -std=c++17 -lrt -D DEBUG -o klient.x", a potem w osobnych terminalach, odpalamy "serwer.x" i "klient.x"
+
+    >Dla katalogu "kolejka_good" jest troche inna kompilacja, albowiem, wpisujemy "g++ klient.cpp kolejka.cpp -o klient.x -lrt; g++ serwer.cpp kolejka.cpp -o serwer.x -lrt", a potem w osobnych terminalach, odpalamy "serwer.x" i "klient.x"
 
 * **Uruchamianie biblioteki:**
 
