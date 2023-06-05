@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-#include "class.h"
+#include "memory.h"
 
 using namespace std;
 
@@ -28,7 +28,7 @@ int sharedMemory::open_shm(const char *name, int flags, mode_t mode){
         return -1;
        }
     }
-    return 0;
+    return des;
 };
 
 int sharedMemory::close_shm(int fd){

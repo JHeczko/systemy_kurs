@@ -45,6 +45,10 @@
 
     > Zwykla kompilacja "g++ main.cpp class.cpp -std=c++17; ./a.out"
 
+* **Uruchamianie zadania do pamieci ale z dolaczona biblioteka:**
+
+    > Trzeba wpisac: "g++ semaphore.cpp -c; g++ memory.cpp -c; ar rvs lib.a memory.o semaphore.o; g++ kons.cpp lib.a -o kons; g++ prod.cpp lib.a -o prod; g++ main.cpp lib.a"
+
 # CWICZENIE 8
 
 * **Uruchamianie zadania z kolejkami:**

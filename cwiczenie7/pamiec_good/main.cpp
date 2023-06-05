@@ -9,20 +9,24 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "main.h"
+#include "memory.h"
+#include "semaphore.h"
 
-using namespace std;
+using namespace std; 
+using namespace sharedMemory;
+using namespace semaphore;
 
 void wyjscie(){
-    while(sem_unlink("/semP") != -1);
-    while(sem_unlink("/semK") != -1);
-    while(shm_unlink("/mem") != -1);
+    while(unlink_sem("/semP") != -1);
+    while(unlink_sem("/semK") != -1);
+    while(unlink_sem("/mem") != -1);
     cout << "Usunalem" << endl;
 }
 
 void handler(int sig_id){
-    while(sem_unlink("/semP") != -1);
-    while(sem_unlink("/semK") != -1);
-    while(shm_unlink("/mem") != -1);
+    while(unlink_sem("/semP") != -1);
+    while(unlink_sem("/semK") != -1);
+    while(unlink_sem("/mem") != -1);
     cout << "Usunalem i odsluzylem sygnal: " << sig_id << endl;
 }
 
@@ -33,9 +37,9 @@ int main(int argc, char* argv[]){
     while(shm_unlink("/mem") != -1);
     unsigned int a = 20;
     unsigned int b = 0; 
-    sem_t* des_semP = sem_open("/semP", O_CREAT | O_EXCL, 0644, a);
-    sem_t* des_semK = sem_open("/semK", O_CREAT | O_EXCL, 0644, b);
-    int des_mem = shm_open("/mem", O_CREAT | O_RDWR | O_EXCL | O_TRUNC, 0644);
+    sem_t* des_semP = open_sem("/semP", O_CREAT | O_EXCL, 0644, a);
+    sem_t* des_semK = open_sem("/semK", O_CREAT | O_EXCL, 0644, b);
+    int des_mem = open_shm("/mem", O_CREAT | O_RDWR | O_EXCL | O_TRUNC, 0644);
     atexit(wyjscie);
     signal(SIGINT, handler);
     int valueK,valueP;
@@ -45,12 +49,12 @@ int main(int argc, char* argv[]){
     // cout << "VALUE OF SEMP AND SEMK: " << valueP << " " << valueK << endl;
     cout << "DES SHM: " << des_mem << endl << "SIZE: " << sizeof(buf_object) << endl;
 
-    ftruncate(des_mem, sizeof(buf_object));
+    ftruncate_shm(des_mem, sizeof(buf_object));
 
     buf_object* bufptr = (buf_object*) mmap(NULL, sizeof(buf_object), PROT_WRITE | PROT_READ , MAP_SHARED, des_mem, 0);
     bufptr->pos_read = 0;
     bufptr->pos_write = 0;
-    munmap(bufptr, sizeof(buf_object));
+    munmap_shm(bufptr, sizeof(buf_object));
 //------------------KONIEC SETUP
 //------------------OBSLUGA BLEDU
     if(des_semK == SEM_FAILED){
